@@ -89,11 +89,10 @@ class KeywordQueryEventListener(EventListener):
 				totalMatches = len(results)
 				logger.debug(f"assembling {min(Config.limit, totalMatches)} results")
 				for match in results[:Config.limit]:
-					matchName = match.decode("utf-8")
-					logger.debug(f"match: {matchName}")
+					logger.debug(f"match: {match}")
 					items.append(ExtensionResultItem(icon='images/ok.png',
-						name = matchName.split("/")[-1], #only file/dir name
-						description = matchName, # full path
+						name = match.split("/")[-1], #only file/dir name
+						description = match, # full path
 						on_enter = OpenAction(match),
 						on_alt_enter = CopyToClipboardAction(match)))
 				if totalMatches > Config.limit:

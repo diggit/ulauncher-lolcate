@@ -37,7 +37,7 @@ class Locator:
 			# 	cmd.append(self.opt)
 			cmd.extend(args)
 			self.logger.debug(f"executing {cmd}")
-			output = subprocess.check_output(cmd)
+			output = subprocess.check_output(cmd).decode('utf-8')
 			split = output.splitlines()
 			# self.logger.debug(f"{split}")
 			count = len(split)
